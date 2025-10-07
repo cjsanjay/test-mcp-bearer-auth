@@ -155,11 +155,12 @@ async def generate_uuid(count: int = 1) -> str:
 def main():
     parser = argparse.ArgumentParser(description="Run MCP Streamable HTTP based server")
     parser.add_argument("--transport", type=str, default="http", help="transport for the app")
+    parser.add_argument("--host", type=str, default="localhost", help="host to run the app")
     parser.add_argument("--port", type=int, default=8123, help="Localhost port to listen on")
     args = parser.parse_args()
 
     # Start the server with Streamable HTTP transport
-    uvicorn.run(mcp.streamable_http_app, host="localhost", port=args.port)
+    uvicorn.run(mcp.streamable_http_app, host=args.host, port=args.port)
 
 
 if __name__ == "__main__":
